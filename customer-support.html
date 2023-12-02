@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="customer.html">
+                        <i class="fas fa-home"></i>
+                        <span class="nav-item">Home</span>
+                    </a></li>
+                <li><a href="customer-support.html">
+                        <i class="fas fa-industry"></i>
+                        <span class="nav-item">Industry based Business</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fas fa-review"></i>
+                        <span class="nav-item">Review</span>
+                    </a></li>
+                <li><a href="customer-explore.html">
+                        <i class="fas fa-explore"></i>
+                        <span class="nav-item">Explore</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fas fa-help"></i>
+                        <span class="nav-item">Help</span>
+                    </a></li>
+                <li><a href="index.html">
+                        <i class="fas fa-logout"></i>
+                        <span class="nav-item">Logout</span>
+                    </a></li>
+            </ul>
+        </nav>
+    
+    </div>
+    
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card p-4">
+            <h2>Businesses</h2>
+            
+            <!-- Categories -->
+            <div>
+                <h4>Categories:</h4>
+                <div>
+                    <input type="checkbox" id="architecture" name="category" value="Architecture & Construction">
+                    <label for="architecture">Architecture & Construction</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="consumerGoods" name="category" value="Consumer Packaged Goods">
+                    <label for="consumerGoods">Consumer Packaged Goods</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="energy" name="category" value="Energy, Process & Utility">
+                    <label for="energy">Energy, Process & Utility</label>
+                </div>
+            </div>
+
+            <!-- Sizes -->
+            <div>
+                <h4>Sizes:</h4>
+                <div>
+                    <input type="checkbox" id="small" name="size" value="Small">
+                    <label for="small">Small</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="large" name="size" value="Large">
+                    <label for="large">Large</label>
+                </div>
+            </div>
+
+            <!-- Output Box -->
+            <div class="mt-3">
+                <h4>Filtering Result:</h4>
+                <div id="output-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery for simplicity in this example -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Handle checkbox changes
+            $('input[type="checkbox"]').change(function () {
+                updateOutput();
+            });
+
+            // Function to update the output box
+            function updateOutput() {
+                var output = "Selected Categories: ";
+                $('input[name="category"]:checked').each(function () {
+                    output += $(this).val() + ", ";
+                });
+
+                output += "<br>Selected Sizes: ";
+                $('input[name="size"]:checked').each(function () {
+                    output += $(this).val() + ", ";
+                });
+
+                // Display output in the output box
+                $('#output-box').html(output);
+            }
+        });
+    </script>
+</body>
+</html>
